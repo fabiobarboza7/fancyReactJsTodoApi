@@ -63,6 +63,12 @@ class UserController {
 
     return res.json(updateUser);
   }
+
+  async index(req, res) {
+    const users = await User.findAll();
+
+    return res.json(users);
+  }
 }
 
 export default new UserController();

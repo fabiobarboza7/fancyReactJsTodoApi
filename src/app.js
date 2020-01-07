@@ -1,5 +1,5 @@
 import 'dotenv/config';
-
+import cors from 'cors';
 import Youch from 'youch';
 import express from 'express';
 import 'express-async-errors';
@@ -18,6 +18,7 @@ class App {
   }
 
   middlewares() {
+    this.server.use(cors());
     this.server.use(express.json());
   }
 
