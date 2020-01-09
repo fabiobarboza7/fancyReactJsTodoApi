@@ -10,13 +10,13 @@ import FileController from './app/controllers/FileController';
 const routes = new Router();
 const upload = multer(multerConfig);
 
-routes.post('/users', UserController.store);
-routes.post('/sessions', SessionController.store);
+routes.post('/api/v1/users', UserController.store);
+routes.post('/api/v1/sessions', SessionController.store);
 
-routes.get('/users', UserController.index);
+routes.get('/api/v1/users', UserController.index);
 
 routes.use(authMiddleware);
-routes.put('/users', UserController.update);
-routes.post('/files', upload.single('file'), FileController.store);
+routes.put('/api/v1/users', UserController.update);
+routes.post('/api/v1/files', upload.single('file'), FileController.store);
 
 export default routes;

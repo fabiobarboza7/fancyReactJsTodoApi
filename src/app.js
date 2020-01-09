@@ -1,10 +1,10 @@
 import 'dotenv/config';
 import cors from 'cors';
 import Youch from 'youch';
+import path from 'path';
 import express from 'express';
-import 'express-async-errors';
-
 import routes from './routes';
+import 'express-async-errors';
 
 import './database';
 
@@ -20,6 +20,10 @@ class App {
   middlewares() {
     this.server.use(cors());
     this.server.use(express.json());
+    this.server.use(
+      '/api/v1/files',
+      express.static(path.resolve(__dirname, '..', 'tmp', 'uploads'))
+    );
   }
 
   routes() {
